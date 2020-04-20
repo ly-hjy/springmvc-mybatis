@@ -2,9 +2,7 @@ package cn.itcast.springmvc.dao;
 
 import cn.itcast.springmvc.pojo.Items;
 import cn.itcast.springmvc.pojo.ItemsExample;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface ItemsMapper {

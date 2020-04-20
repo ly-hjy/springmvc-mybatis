@@ -9,6 +9,33 @@
 
 	<!-- 扫描@controller -->
 	<context:component-scan base-package="cn.itcast"></context:component-scan>
-
-
+	
+	<!--
+	 处理器映射器配置-->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+	
+	 <!--  处理器适配器 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+	
+	<!-- 注解驱动 -->
+	<mvc:annotation-driven conversion-service="ConversionServiceFactoryBean" />
+	
+	
+	<!-- 配置converters转换器    转换日期      转换工厂（也可以对其他格式进行转换）-->
+	<bean id="ConversionServiceFactoryBean" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<!-- 配置多个转换器 -->
+		<property name="converters" >
+			<list>
+				<!-- 自定义转换器的类   主动定义转换过程 -->
+				<bean class="cn.itcast.springmvc.conversion.DateConverter"></bean>
+			</list>
+		</property>
+	</bean>
+	<!-- 视图解析器配置 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	
 </beans>
